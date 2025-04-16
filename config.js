@@ -3034,7 +3034,7 @@ var toReturn = {
 			},
 			getMult: function(addAb, addLev){
 				var level = this.radLevel;
-				var abLevel = autoBattle.maxEnemyLevel - 1;
+				var abLevel = autoBattle.getMaxEnemyBeaten();
 				if (addAb) abLevel += addAb;
 				if (addLev) level += addLev;
 				var base = this.baseStats + (this.statsPerLevel * abLevel);

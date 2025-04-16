@@ -734,7 +734,6 @@ var autoBattle = {
             this.items[item].owned = true;
         }
     },
-
     resetAll: function(){
         this.enemyLevel = 1;
         this.maxEnemyLevel = 1;
@@ -2809,7 +2808,7 @@ var autoBattle = {
             },
             owned: false,
             getMult: function(){
-                return 1 + (0.05 * (autoBattle.maxEnemyLevel - 1));
+                return 1 + (0.05 * (autoBattle.getMaxEnemyBeaten()));
             },
             requiredItems: 7
         },
@@ -2837,7 +2836,7 @@ var autoBattle = {
             },
             owned: false,
             getMult: function(){
-                return Math.pow(0.99, autoBattle.maxEnemyLevel - 1);
+                return Math.pow(0.99, autoBattle.getMaxEnemyBeaten());
             },
             requiredItems: 21
         },
@@ -2851,7 +2850,7 @@ var autoBattle = {
             owned: false,
             requiredItems: 28,
             getHubs: function(){
-                return 2 + Math.floor((autoBattle.maxEnemyLevel - 1) / 30);
+                return 2 + Math.floor((autoBattle.getMaxEnemyBeaten()) / 30);
             }
         },
         Dusty_Tome: {
@@ -2869,7 +2868,7 @@ var autoBattle = {
             owned: false,
             requiredItems: 36,
             getMult: function(){
-                return 1 + ((autoBattle.maxEnemyLevel - 1) * 0.005);
+                return 1 + ((autoBattle.getMaxEnemyBeaten()) * 0.005);
             }
         },
         Suprism: {
@@ -3875,7 +3874,6 @@ var autoBattle = {
             mods: []
         }
     },
-
     getRingStatusDamage: function(){
         if (!this.oneTimers.The_Ring.owned) return 0;
         return this.rings.level * 25 * Math.pow(1.5, Math.floor(this.rings.level / 10));
@@ -4488,6 +4486,9 @@ var autoBattle = {
                 itemsElem.scrollTop = scrollTop;
             }
         }
+    },
+    getMaxEnemyBeaten: function(){
+        return this.maxEnemyLevel - 1 + Number(this.canSeal);
     }
 }  
 
