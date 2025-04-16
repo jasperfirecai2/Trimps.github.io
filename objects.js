@@ -5135,14 +5135,14 @@ var u2Mutations = {
         var reward = game.global.world - 199;
         var rewardMult = 0;
         if (cell.u2Mutation.length >= 2) giveSingleAchieve("Double Trouble");
-        var nullText = "";
-        var expText = "";
-        for (var x = 0; x < cell.u2Mutation.length; x++){
-            var mut = cell.u2Mutation[x];
+        let nullText = "";
+        let expText = "";
+        for (let x = 0; x < cell.u2Mutation.length; x++){
+            const mut = cell.u2Mutation[x];
             if (mut == 'RGE'){
                 rewardMult += this.types.Rage.rewardMult();
                 if (this.tree.Ragiffium.purchased){
-                    var full = getRecycleValueByRarity(getHeirloomRarity(game.global.world, 1, false, true));
+                    const full = getRecycleValueByRarity(getHeirloomRarity(game.global.world, 1, false, true));
                     game.global.nullifium += (full * 0.05);
                     nullText = " and " + prettify(full * 0.05) + " Nullifium";
                 }
@@ -5150,7 +5150,7 @@ var u2Mutations = {
             else if (mut == 'NVA' || mut == 'NVX'){
                 rewardMult += this.types.Nova.rewardMult();
                 if (this.tree.NovaScruff.purchased && mut == 'NVA') {
-					var novaExpRewardValue = Fluffy.rewardExp(3);
+					const novaExpRewardValue = Fluffy.rewardExp(3);
                     expText = " and " + prettify(novaExpRewardValue) + " Exp";
                 }
             }
